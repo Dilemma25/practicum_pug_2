@@ -1,14 +1,11 @@
+mixin createMenu(menu, active)
+  each value, key in menu
+    if active == key
+      a.active(href= value)= key
+    else
+      a(href= value)= key
 
-mixin createField(n)
-  -var i = 0;
-  table
-    while i < n
-      tr
-        - var j = 0;
-        while j < n
-          if (i==j || ((i+j)%2==0 && j<i)) 
-            td.gray-bg
-          else
-            td
-          -j++
-      -i++
+mixin createMenuBuild(menu, active)
+  each value, key in menu
+    a(href=value class=(active == key ? "active" : ""))= key
+  a.active(href="#")= active
